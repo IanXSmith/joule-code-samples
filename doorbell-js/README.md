@@ -1,18 +1,18 @@
 # Doorbell in javascript*
 ## Introduction
 
-This smart doorbell application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Joule Expansion Board development platform, cloud platforms, APIs, and other technologies.
+This smart doorbell application is part of a series of how-to Intel® IoT Platform code sample exercises using the Intel® IoT Developer Kit, Intel® Joule™ development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel® Joule Expansion Board development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Joule Expansion Board platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Joule Expansion Board or Intel® Galileo board.<br>
-- Store the doorbell ring data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Connect the Intel® Joule™ development board, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
+- Interface with the Intel® Joule™ development board platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Joule™ development board or Intel® Galileo board.<br>
+- Store the doorbell ring data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a MQTT-based server using Microsoft Azure\* IoT Hub, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
-Using an Intel® Joule Expansion Board, this project lets you create a smart doorbell that:
+Using an Intel® Joule™ development board, this project lets you create a smart doorbell that:
 - issues an audible notification whenever the doorbell is rung;
 - issues a visual notification whenever the doorbell is rung;
 - keeps track of visitors using cloud-based data storage.
@@ -21,13 +21,13 @@ Using an Intel® Joule Expansion Board, this project lets you create a smart doo
 
 This smart doorbell makes a noise with the buzzer when the Grove\* Touch Sensor is pressed. In addition, it displays a message on the LCD.
 
-Optionally, doorbell ring data can also be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
+Optionally, doorbell ring data can also be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
 Grove\* Starter Kit Plus, containing:
 
-1. Intel® Joule Expansion Board
+1. Intel® Joule™ development board
 2. [Grove\* Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/ttp223.html)
 3. [Grove\* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
@@ -37,7 +37,7 @@ Grove\* Starter Kit Plus, containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
+2. Microsoft Azure\*, IBM Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
 
@@ -50,11 +50,11 @@ To begin, the project already exists as a template in the Intel® XDK IoT Editio
 5. Now it prompts you to take a tour of XDK, up to you if you want to take a tour.
 6. Now you have the code in front of you and you can play around with it as you please.
 
-You need to connect to your Intel® Joule Expansion Board from your computer to send code to it.
+You need to connect to your Intel® Joule™ development board from your computer to send code to it.
 
 ![](./images/xdk-select-device.png)
 
-Click the **IoT Device** menu at the bottom left. If your Intel® Joule Expansion Board is automatically recognized, select it.
+Click the **IoT Device** menu at the bottom left. If your Intel® Joule™ development board is automatically recognized, select it.
 
 ![](./images/xdk-manual-connect.png)
 
@@ -62,12 +62,12 @@ Otherwise, select **Add Manual Connection**.
 In the **Address** field, type `192.168.2.15`. In the **Port** field, type `58888`.
 Click **Connect** to save your connection.
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
 ![](./images/doorbell-overall.jpg)
 
-You need to have a Grove\* Shield connected to the Intel® Joule Expansion Board correctly. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
-The pin mapping for the Intel® Joule Expansion Board is not the same as the Edison or Galileo board. The Intel® Joule Expansion Board has 2 breakouts, with each having 40 pins. You also have access to 4 onboard LEDs. The following are the instructions for hooking up the doorbell circuitry.
+You need to have a Grove\* Shield connected to the Intel® Joule™ development board correctly. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
+The pin mapping for the Intel® Joule™ development board is not the same as the Intel® Edison board or Galileo board. The Intel® Joule™ development board has 2 breakouts, with each having 40 pins. You also have access to 4 onboard LEDs. The following are the instructions for hooking up the doorbell circuitry.
 
 1. Pin-1 on Breakout-1 is used for the GPIO based sensor here - TTP223, connect this pin to the D2 pin on the Grove\* Base Shield and plug one end of a Grove\* cable connected to the Grove\* PIR motion sensor into the D2 port on the base shield.
 2. Pin-26 on Breakout-1 is used as the PWM pin which will be used for the Grove Buzzer. Connect this pin to D5 on the Grove\* Base Shield. Now use a Grove\* Connector Cable to connect the Grove\* buzzer to the D5 port on the Grove\* Base Shield.
@@ -77,7 +77,7 @@ The pin mapping for the Intel® Joule Expansion Board is not the same as the Edi
 
 ### Datastore server setup
 
-Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS\*, along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -85,7 +85,7 @@ For information on how to set up your own cloud data server, go to:
 
 ### MQTT server setup
 
-You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS.
+You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS\*.
 
 For information on how to connect to your own cloud MQTT messaging server, go to:
 
@@ -93,7 +93,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS\* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
@@ -102,11 +102,11 @@ To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, 
 }
 ```
 
-For information on how to configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS MQTT messaging server, go to:
+For information on how to configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS\* MQTT messaging server, go to:
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
-This example needs cloud connectivity for which you would need to unblock the IP ports on the Intel® Joule Expansion Board. They are done as follows:
+This example needs cloud connectivity for which you would need to unblock the IP ports on the Intel® Joule™ development board. They are done as follows:
 
 	$ iptables –F
 	$ iptables –P INPUT ACCEPT
@@ -120,23 +120,23 @@ When you're ready to run the example, make sure you saved all the files.
 
 ![](./images/xdk-upload.png)
 
-Click the **Upload** icon to upload the files to the Intel® Joule Expansion Board.
+Click the **Upload** icon to upload the files to the Intel® Joule™ development board.
 
 ![](./images/xdk-run.png)
 
-Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the code on Intel® Joule Expansion Board.
+Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the code on Intel® Joule™ development board.
 
 ![](./images/xdk-upload-run.png)
 
-If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Joule Expansion Board.
+If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Joule™ development board.
 
 ![](./images/doorbell-output.png)
 
 You will see output similar to the above when the program is running.
 
-### Determining the Intel® Joule Expansion Board's IP address
+### Determining the IP address of the Intel® Joule™ development board
 
-You can determine what IP address the Intel® Joule Expansion Board is connected to by running the following command:
+You can determine what IP address the Intel® Joule™ development board is connected to by running the following command:
 
     ifconfig
  
